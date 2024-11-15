@@ -1,4 +1,4 @@
-# Segmentação de Clientes para E-commerce
+# Segmentação de Clientes para E-commerce (Nao ta pronto)
 
 ## Pergunta de Negócio
 **Como podemos identificar e segmentar grupos de clientes com comportamentos distintos para otimizar campanhas de marketing e aumentar o engajamento e a retenção?**
