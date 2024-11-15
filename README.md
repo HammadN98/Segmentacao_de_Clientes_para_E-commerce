@@ -49,4 +49,25 @@ O projeto segmentou clientes em sete clusters distintos com base em comportament
 A segmentação fornece insights estratégicos que ajudam a empresa a entender seu público, permitindo ações específicas para fidelização e incremento do lifetime value dos clientes.
 
 ---
+## Perfis dos Clusters e Principais Insights
 
+- **Cluster de Alto Valor**: Clientes jovens, altamente satisfeitos, com alto gasto e frequência de compras. Esse grupo responde bem a campanhas exclusivas.
+- **Cluster de Engajamento Médio**: Clientes com gasto intermediário e frequência regular. Potencial para aumentar o ticket médio com cross-selling e up-selling.
+- **Cluster de Baixo Gasto e Frequência**: Clientes de idade mais avançada, com compras ocasionais e baixo gasto. Podem ser incentivados com promoções.
+- **Clientes Inconstantes**: Compram com baixa frequência, mas possuem gasto moderado. Estratégias de reativação podem ser eficazes para esse grupo.
+
+---
+
+## Recomendações
+
+1. **Campanhas de Exclusividade para Clusters de Alto Valor**:
+   - Ofereça acesso antecipado a produtos, eventos VIP e programas de fidelidade exclusivos para incentivar a lealdade desses clientes.
+
+2. **Promoções de Up-Selling e Cross-Selling para Clusters de Engajamento Médio**:
+   - Aumente o ticket médio com ofertas de produtos complementares e recompensas para compras maiores.
+
+3. **Campanhas de Retenção e Reativação para Clusters de Menor Engajamento**:
+   - Incentive a atividade desses clientes com promoções e descontos específicos, aumentando a frequência de compras.
+
+4. **Monitoramento Contínuo dos Clusters**:
+   - Estabeleça um pipeline de atualização regular para manter os clusters relevantes e avaliar a eficácia das campanhas ao longo do tempo.
