@@ -27,6 +27,20 @@ Este projeto utiliza técnicas de clustering para dividir clientes de e-commerce
 
 ## Estrutura dos Dados
 
+### Variáveis Numéricas:
+- **Age**: Idade do cliente.
+- **Total Spend**: Gasto total acumulado.
+- **Items Purchased**: Número total de itens comprados.
+- **Average Rating**: Avaliação média do cliente.
+- **Days Since Last Purchase**: Dias desde a última compra.
+
+### Variáveis Categóricas Codificadas:
+- **Membership Type**: Tipo de adesão (1 = Bronze, 2 = Silver, 3 = Gold).
+- **Satisfaction Level**: Nível de satisfação (1 = "Unsatisfied, 2 = Neutral, 3 = Neutral). 
+- **Discount Applied**: Indica se foi aplicado desconto (0 = Não, 1 = Sim).
+- **Gender**: Gênero do cliente (1 = Male, 2 = Female).
+- **City**: Localização do cliente, categorizada numericamente.
+  
 ---
 
 ## Sumário Executivo
