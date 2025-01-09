@@ -1,5 +1,7 @@
 # Segmentação de Clientes para E-commerce 
 
+---
+
 ## Sumário Executivo
 O projeto segmentou clientes em sete clusters distintos com base em comportamentos de compra e características demográficas. Através da aplicação de K-Means e métricas como o Silhouette Score, foram criados perfis que identificam desde clientes de alto valor e frequência até clientes de menor gasto e engajamento. Esse modelo de segmentação permite a criação de campanhas de marketing personalizadas para aumentar o valor e a retenção dos clientes.
 
@@ -14,6 +16,17 @@ A segmentação fornece insights estratégicos que ajudam a empresa a entender s
 - **Clientes Inconstantes**: Compram com baixa frequência, mas possuem gasto moderado. Estratégias de reativação podem ser eficazes para esse grupo.
 
 ---
+
+## Recomendações
+
+1. **Campanhas de Exclusividade para Clusters de Alto Valor**:
+   - Ofereça acesso antecipado a produtos, eventos VIP e programas de fidelidade exclusivos para incentivar a lealdade desses clientes.
+
+2. **Promoções de Up-Selling e Cross-Selling para Clusters de Engajamento Médio**:
+   - Aumente o ticket médio com ofertas de produtos complementares e recompensas para compras maiores.
+
+3. **Campanhas de Retenção e Reativação para Clusters de Menor Engajamento**:
+   - Incentive a atividade desses clientes com promoções e descontos específicos, aumentando a frequência de compras.
 ## Pergunta de Negócio
 **Como podemos identificar e segmentar grupos de clientes com comportamentos distintos para otimizar campanhas de marketing e aumentar o engajamento e a retenção?**
 
@@ -55,20 +68,3 @@ Este projeto utiliza técnicas de clustering para dividir clientes de e-commerce
 - **Gender**: Gênero do cliente (1 = Male, 2 = Female).
 - **City**: Localização do cliente, categorizada numericamente.
   
----
-
-
-
-## Recomendações
-
-1. **Campanhas de Exclusividade para Clusters de Alto Valor**:
-   - Ofereça acesso antecipado a produtos, eventos VIP e programas de fidelidade exclusivos para incentivar a lealdade desses clientes.
-
-2. **Promoções de Up-Selling e Cross-Selling para Clusters de Engajamento Médio**:
-   - Aumente o ticket médio com ofertas de produtos complementares e recompensas para compras maiores.
-
-3. **Campanhas de Retenção e Reativação para Clusters de Menor Engajamento**:
-   - Incentive a atividade desses clientes com promoções e descontos específicos, aumentando a frequência de compras.
-
-4. **Monitoramento Contínuo dos Clusters**:
-   - Estabeleça um pipeline de atualização regular para manter os clusters relevantes e avaliar a eficácia das campanhas ao longo do tempo.
