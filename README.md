@@ -1,7 +1,7 @@
 # Segmentação de Clientes para E-commerce 
 ![img](https://www.hubspot.com/hs-fs/hubfs/media/Segmentacaodeclientesoqueecomoexecutaremseunegocio.jpeg?width=595&height=400&name=Segmentacaodeclientesoqueecomoexecutaremseunegocio.jpeg)
 
-<img src="https://www.hubspot.com/hs-fs/hubfs/media/Segmentacaodeclientesoqueecomoexecutaremseunegocio.jpeg?width=595&height=400&name=Segmentacaodeclientesoqueecomoexecutaremseunegocio.jpeg" alt="Segmentação de clientes" width="600" height="400">
+<img src="https://www.hubspot.com/hs-fs/hubfs/media/Segmentacaodeclientesoqueecomoexecutaremseunegocio.jpeg?width=595&height=400&name=Segmentacaodeclientesoqueecomoexecutaremseunegocio.jpeg" alt="Segmentação de clientes" width="400" height="200">
 
 ## Pergunta de Negócio
 **Como podemos identificar e segmentar grupos de clientes com comportamentos distintos para otimizar campanhas de marketing e aumentar o engajamento e a retenção?**
