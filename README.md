@@ -1,5 +1,4 @@
 # Segmentação de Clientes para E-commerce 
-![img](https://www.hubspot.com/hs-fs/hubfs/media/Segmentacaodeclientesoqueecomoexecutaremseunegocio.jpeg?width=595&height=400&name=Segmentacaodeclientesoqueecomoexecutaremseunegocio.jpeg)
 
 <img src="https://www.hubspot.com/hs-fs/hubfs/media/Segmentacaodeclientesoqueecomoexecutaremseunegocio.jpeg?width=595&height=400&name=Segmentacaodeclientesoqueecomoexecutaremseunegocio.jpeg" alt="Segmentação de clientes" width="400" height="200">
 
