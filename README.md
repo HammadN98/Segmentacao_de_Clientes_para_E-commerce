@@ -1,5 +1,19 @@
-# Segmentação de Clientes para E-commerce (Nao ta pronto)
+# Segmentação de Clientes para E-commerce 
 
+## Sumário Executivo
+O projeto segmentou clientes em sete clusters distintos com base em comportamentos de compra e características demográficas. Através da aplicação de K-Means e métricas como o Silhouette Score, foram criados perfis que identificam desde clientes de alto valor e frequência até clientes de menor gasto e engajamento. Esse modelo de segmentação permite a criação de campanhas de marketing personalizadas para aumentar o valor e a retenção dos clientes.
+
+A segmentação fornece insights estratégicos que ajudam a empresa a entender seu público, permitindo ações específicas para fidelização e incremento do lifetime value dos clientes.
+
+---
+## Perfis dos Clusters e Principais Insights
+
+- **Cluster de Alto Valor**: Clientes jovens, altamente satisfeitos, com alto gasto e frequência de compras. Esse grupo responde bem a campanhas exclusivas.
+- **Cluster de Engajamento Médio**: Clientes com gasto intermediário e frequência regular. Potencial para aumentar o ticket médio com cross-selling e up-selling.
+- **Cluster de Baixo Gasto e Frequência**: Clientes de idade mais avançada, com compras ocasionais e baixo gasto. Podem ser incentivados com promoções.
+- **Clientes Inconstantes**: Compram com baixa frequência, mas possuem gasto moderado. Estratégias de reativação podem ser eficazes para esse grupo.
+
+---
 ## Pergunta de Negócio
 **Como podemos identificar e segmentar grupos de clientes com comportamentos distintos para otimizar campanhas de marketing e aumentar o engajamento e a retenção?**
 
@@ -43,20 +57,7 @@ Este projeto utiliza técnicas de clustering para dividir clientes de e-commerce
   
 ---
 
-## Sumário Executivo
-O projeto segmentou clientes em sete clusters distintos com base em comportamentos de compra e características demográficas. Através da aplicação de K-Means e métricas como o Silhouette Score, foram criados perfis que identificam desde clientes de alto valor e frequência até clientes de menor gasto e engajamento. Esse modelo de segmentação permite a criação de campanhas de marketing personalizadas para aumentar o valor e a retenção dos clientes.
 
-A segmentação fornece insights estratégicos que ajudam a empresa a entender seu público, permitindo ações específicas para fidelização e incremento do lifetime value dos clientes.
-
----
-## Perfis dos Clusters e Principais Insights
-
-- **Cluster de Alto Valor**: Clientes jovens, altamente satisfeitos, com alto gasto e frequência de compras. Esse grupo responde bem a campanhas exclusivas.
-- **Cluster de Engajamento Médio**: Clientes com gasto intermediário e frequência regular. Potencial para aumentar o ticket médio com cross-selling e up-selling.
-- **Cluster de Baixo Gasto e Frequência**: Clientes de idade mais avançada, com compras ocasionais e baixo gasto. Podem ser incentivados com promoções.
-- **Clientes Inconstantes**: Compram com baixa frequência, mas possuem gasto moderado. Estratégias de reativação podem ser eficazes para esse grupo.
-
----
 
 ## Recomendações
 
