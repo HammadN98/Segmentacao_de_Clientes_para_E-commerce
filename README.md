@@ -1,229 +1,206 @@
-# 🛒 Segmentação de Clientes para E-commerce
-> Identificação de perfis comportamentais via K-Means para otimização de campanhas de marketing e incremento do lifetime value (LTV)
+# 🛍️ Customer Segmentation — E-commerce Behavior
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python&logoColor=white)
-![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.3-orange?logo=scikit-learn&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Concluído-brightgreen)
-![License](https://img.shields.io/badge/License-MIT-lightgrey)
+> Segmentação não supervisionada de clientes de e-commerce usando K-Means, PCA e análise estatística multivariada, com foco em geração de personas acionáveis para estratégias de CRM.
 
----
+<br>
 
-## 📋 Sumário
-- [Contexto de Negócio](#-contexto-de-negócio)
-- [Resultados e Impacto](#-resultados-e-impacto)
-- [Metodologia](#-metodologia)
-- [Estrutura dos Dados](#-estrutura-dos-dados)
-- [Perfis dos Clusters](#-perfis-dos-clusters)
-- [Estratégias de Marketing por Cluster](#-estratégias-de-marketing-por-cluster)
-- [Como Reproduzir](#-como-reproduzir)
-- [Próximos Passos](#-próximos-passos)
+## 📌 Visão Geral
 
----
+Este projeto aplica técnicas de **Machine Learning não supervisionado** sobre dados reais de comportamento de clientes em e-commerce, com o objetivo de identificar perfis distintos de consumidores e traduzir esses perfis em **estratégias de marketing personalizadas**.
 
-## 🎯 Contexto de Negócio
+O pipeline cobre desde a análise exploratória até a validação estatística dos clusters, passando pela comparação de três algoritmos de clustering e justificativa técnica da escolha do modelo final.
 
-**Pergunta central:** *Como identificar e segmentar grupos de clientes com comportamentos distintos para otimizar campanhas de marketing e aumentar engajamento e retenção?*
+<br>
 
-O time de marketing enfrentava o desafio de comunicar-se com toda a base de clientes de forma genérica, sem personalização, resultando em baixas taxas de conversão e retenção. Este projeto aplica técnicas de **clustering não-supervisionado** para segmentar clientes de e-commerce com base em comportamento de compra e perfil demográfico, viabilizando campanhas direcionadas e aumento do LTV.
+## 📊 Visualizações em Destaque
+
+### Radar de Perfis dos Clusters
+> Cada eixo representa uma dimensão do comportamento do cliente (normalizada). A área do polígono revela o "tipo" de cliente de cada cluster.
+
+*(inserir print do gráfico radar aqui)*
 
 ---
 
-## 📊 Resultados e Impacto
+### Distribuição dos Clusters via PCA
+> Redução para 2 dimensões com variância explicada exibida nos eixos. Clusters visualmente separados validam a qualidade da segmentação.
 
-| Métrica | Resultado |
-|---|---|
-| Número de clusters identificados | **7** |
-| Silhouette Score | **0.XX** |
-| Algoritmo principal | **K-Means** |
-| Variáveis utilizadas | **9** (5 numéricas + 4 categóricas) |
-
-> **Impacto financeiro estimado:** A implementação das estratégias mapeadas para os clusters de maior valor tem potencial de aumentar a receita recorrente em **~15–20%** nos primeiros 3 meses, via maior retenção dos clientes Gold e reativação dos clientes inativos.
+*(inserir print do scatter PCA aqui)*
 
 ---
 
-## 🔬 Metodologia
+### Heatmap de Correlação
+> Análise de relacionamento entre variáveis antes da modelagem — etapa essencial para entender o que diferencia os clientes.
+
+*(inserir print do heatmap aqui)*
+
+<br>
+
+## 🧱 Estrutura do Projeto
 
 ```
-Dados Brutos → Limpeza e Pré-processamento → Normalização → Determinação do k Ideal → K-Means → Perfilagem → Estratégias
+📁 projeto
+├── 📓 notebook.ipynb       # Pipeline completo comentado
+├── 📄 README.md            # Este arquivo
+└── 📁 dados/
+    └── E-commerce_CustomerBehavior.csv
 ```
 
-### 1. Limpeza e Pré-processamento
-- Remoção de valores nulos e outliers
-- Normalização (StandardScaler) das variáveis numéricas
-- Encoding ordinal das variáveis categóricas (Membership Type, Satisfaction Level, Gender, City)
+<br>
 
-### 2. Determinação do Número de Clusters
-- **Elbow Method:** análise da inércia por número de k
-- **Silhouette Score:** avaliação da coesão e separação dos grupos
-- Resultado: **k = 7** como configuração ótima
+## 🔄 Pipeline
 
-### 3. Modelagem e Perfilagem
-- Aplicação do **K-Means** com `k=7` e `random_state=42`
-- Criação de perfis descritivos para cada cluster considerando: idade, frequência de compra, gasto médio, satisfação e tipo de associação
+```
+Carregamento dos Dados
+        ↓
+Análise Exploratória (EDA)
+  • Histogramas com boxplot marginal
+  • Boxplots por variável categórica
+  • Heatmap de correlação
+        ↓
+Limpeza & Pré-processamento
+  • Remoção de nulos e duplicatas
+  • Análise de outliers
+  • StandardScaler nas variáveis numéricas
+        ↓
+K-Means — Variáveis Numéricas
+  • Método do Cotovelo (K=4)
+  • Silhouette Score: 0.55
+        ↓
+Comparação de Algoritmos
+  • K-Means  → Silhouette: 0.547
+  • DBSCAN   → Silhouette: 0.696*
+  • Agglomerative → Silhouette: 0.713
+  • ✅ K-Means escolhido por interpretabilidade e cobertura total
+        ↓
+Validação de Estabilidade
+  • Perturbação gaussiana (100 iterações)
+  • ARI médio: 0.616 ± 0.000
+        ↓
+K-Means — Todas as Variáveis (K=7)
+  • Encoding ordinal: Membership Type, Satisfaction Level
+  • Encoding booleano: Discount Applied
+  • One-Hot: Gender, City
+  • Silhouette Score: > 0.70
+        ↓
+Análise dos Clusters
+  • Boxplots por variável numérica
+  • Sunburst por variável categórica
+  • Médias e medianas por cluster
+        ↓
+Validação Estatística
+  • ANOVA (variáveis numéricas): todas p < 0.05
+  • Qui-Quadrado (variáveis categóricas): todas p < 0.05
+        ↓
+Perfis & Estratégias de CRM
+  • 7 personas definidas
+  • Campanhas personalizadas por cluster
+  • Gráfico Radar de perfis
+```
 
----
+<br>
 
-## 🗂️ Estrutura dos Dados
+## 🤖 Comparação de Algoritmos
 
-### Variáveis Numéricas
+| Algoritmo | Clusters | Silhouette | Cobertura | Escolhido |
+|-----------|----------|------------|-----------|-----------|
+| **K-Means** | 7 | 0.547 | 100% | ✅ |
+| DBSCAN | 9 + ruído | 0.696* | 98.4% | ❌ |
+| Agglomerative (Ward) | 7 | 0.713 | 100% | ❌ |
 
-| Variável | Descrição |
-|---|---|
-| `Age` | Idade do cliente |
-| `Total Spend` | Gasto total acumulado |
-| `Items Purchased` | Número total de itens comprados |
-| `Average Rating` | Avaliação média do cliente |
-| `Days Since Last Purchase` | Dias desde a última compra |
+> *Silhouette do DBSCAN calculado excluindo os 4 pontos classificados como ruído, o que pode superestimar a métrica.
 
-### Variáveis Categóricas (Codificadas)
+**Por que K-Means?** Apesar do menor Silhouette Score, foi escolhido pela combinação de: interpretabilidade dos centroides, cobertura total da base, estabilidade em produção e facilidade de re-segmentação mensal automatizada.
 
-| Variável | Encoding |
-|---|---|
-| `Membership Type` | 1 = Bronze · 2 = Silver · 3 = Gold |
-| `Satisfaction Level` | 1 = Unsatisfied · 2 = Neutral · 3 = Satisfied |
-| `Discount Applied` | 0 = Não · 1 = Sim |
-| `Gender` | 1 = Male · 2 = Female |
-| `City` | Categorizado numericamente por localização |
+<br>
 
----
+## 👥 Os 7 Perfis de Clientes
 
-## 👥 Perfis dos Clusters
+| Cluster | Nome | Gasto Médio | Frequência | Satisfação | Membership |
+|---------|------|-------------|------------|------------|------------|
+| 6 | 🏆 VIP Premium | R$ 1.492 | Alta | ⭐ 4.9 | Gold |
+| 3 | 💎 Engajado Leal | R$ 1.340 | Alta | ⭐ 4.7 | Gold |
+| 2 | 🌟 Alto Valor | R$ 1.151 | Média | ⭐ 4.5 | Gold |
+| 1 | 📈 Frequente Médio | R$ 805 | Alta | ⭐ 4.2 | Silver |
+| 4 | ⏳ Inconstante Jovem | R$ 704 | Baixa | ⭐ 4.0 | Silver |
+| 5 | 🔄 Moderado Sênior | R$ 550 | Baixa | ⭐ 3.6 | Bronze/Silver |
+| 0 | 💤 Ocasional | R$ 448 | Média | ⭐ 3.2 | Bronze |
 
-> Baseado na análise das médias e distribuições de cada grupo após a aplicação do K-Means.
+<br>
 
-| Cluster | Nome | Perfil Resumido | Prioridade |
-|---|---|---|---|
-| 0 | 🏆 Embaixadores da Marca | Alto gasto, alta frequência, alta satisfação | 🔴 Alta |
-| 1 | 🌱 Potenciais de Crescimento | Gasto intermediário, frequência regular, satisfação moderada | 🟡 Média |
-| 2 | 💤 Clientes Adormecidos | Baixa frequência, gasto ocasional, longa inatividade | 🔴 Alta |
-| 3 | 🎯 Compradores Inconstantes | Frequência baixa, gasto moderado por compra | 🟡 Média |
-| 4 | 👴 Compradores Maduros | Clientes mais velhos, compras esporádicas e baixo gasto | 🟢 Baixa |
-| 5 | 💎 Clientes VIP Inativos | Alto gasto histórico, mas com redução recente de atividade | 🔴 Alta |
-| 6 | 🔄 Exploradores de Desconto | Compras concentradas em períodos promocionais | 🟡 Média |
+## 🎯 Estratégias de CRM por Cluster
 
----
+| Cluster | Objetivo | Ação Principal |
+|---------|----------|----------------|
+| 6 — VIP Premium | Manter satisfação | Experiências exclusivas + acesso antecipado |
+| 3 — Engajado Leal | Aumentar lifetime value | Clube de assinatura + eventos VIP |
+| 2 — Alto Valor | Reforçar fidelidade | Ofertas premium personalizadas |
+| 1 — Frequente Médio | Elevar ticket médio | Cross-selling + programa de cashback |
+| 4 — Inconstante Jovem | Aumentar frequência | E-mails de reativação + frete grátis |
+| 5 — Moderado Sênior | Estimular volume | Promoções de quantidade + benefícios VIP acessíveis |
+| 0 — Ocasional | Aumentar recorrência | Desconto por tempo limitado + lembretes personalizados |
 
-## 📣 Estratégias de Marketing por Cluster
+<br>
 
-### Visão Executiva — Tabela de KPIs
+## 🛠️ Tecnologias
 
-| Cluster | Ação Principal | KPI | Meta (3 meses) | Impacto Estimado |
-|---|---|---|---|---|
-| 0 · Embaixadores | Programa VIP + cashback | NPS / Frequência mensal | +15% recompra | Alta receita recorrente |
-| 1 · Potenciais | Cross-sell / Up-sell | Ticket médio | +20% ticket médio | Expansão de receita |
-| 2 · Adormecidos | Campanha de reativação | Taxa de reativação 30d | Recuperar 20% | Redução de churn |
-| 3 · Inconstantes | Nudges de recorrência | Frequência de compra | +2 compras/trimestre | Aumento de LTV |
-| 4 · Maduros | Promoções segmentadas | Taxa de conversão | +10% conversão | Retenção base |
-| 5 · VIP Inativos | Reengajamento premium | Retorno ao padrão histórico | Recuperar 25% | Alto valor recuperado |
-| 6 · Exploradores | Fidelização pós-desconto | Compra sem desconto | +5% compras full-price | Margem protegida |
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white)
+![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat&logo=scikit-learn&logoColor=white)
+![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=flat&logo=plotly&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white)
 
----
+| Biblioteca | Uso |
+|------------|-----|
+| `pandas` | Manipulação e análise dos dados |
+| `scikit-learn` | K-Means, PCA, DBSCAN, Agglomerative, Silhouette |
+| `plotly` | Visualizações interativas (histogramas, radar, scatter PCA) |
+| `scipy` | Testes estatísticos ANOVA e Qui-Quadrado |
+| `seaborn / matplotlib` | Gráfico de Silhouette e análises complementares |
+| `numpy` | Operações numéricas e perturbação gaussiana |
 
-### Cluster 0: Embaixadores da Marca 🏆
+<br>
 
-- **Perfil resumido:** Clientes jovens com alto gasto total, frequência de compra elevada e satisfação máxima. Possuem adesão Gold e raramente ficam muitos dias sem comprar.
-- **Ação de marketing sugerida:** Programa de fidelidade "VIP Club" com acesso antecipado a lançamentos, cashback progressivo (2–5%) e convites para eventos exclusivos da marca via e-mail e push notification.
-- **KPI principal:** Net Promoter Score (NPS) e frequência de compra mensal.
-- **Meta (3 meses):** Aumentar a taxa de recompra em 15% e gerar ao menos 50 avaliações positivas na plataforma.
-- **Justificativa:** Esse grupo já ama a marca; o foco é transformá-los em promotores orgânicos e elevar o LTV via recorrência e boca-a-boca, com custo de ativação baixo.
-
----
-
-### Cluster 1: Potenciais de Crescimento 🌱
-
-- **Perfil resumido:** Clientes com gasto intermediário, frequência regular e satisfação moderada. Têm adesão Silver e mostram consistência, mas ainda não atingiram o potencial máximo de gasto.
-- **Ação de marketing sugerida:** Régua de e-mails com ofertas de cross-sell baseadas no histórico de compras e gatilho de up-sell ao atingir R$ X no carrinho (ex: "Adicione R$ 50 e ganhe frete grátis").
-- **KPI principal:** Ticket médio por pedido.
-- **Meta (3 meses):** Aumentar o ticket médio em 20% e converter 30% do cluster para adesão Gold.
-- **Justificativa:** Com pequenos estímulos contextuais, clientes nesse estágio tendem a ampliar o escopo de compra; o upgrade de membership também aumenta o comprometimento com a plataforma.
-
----
-
-### Cluster 2: Clientes Adormecidos 💤
-
-- **Perfil resumido:** Compradores com longo período de inatividade (alto `Days Since Last Purchase`), baixa frequência e gasto reduzido. Sinal claro de risco de churn.
-- **Ação de marketing sugerida:** Campanha de reativação multicanal com desconto progressivo ("Sentimos sua falta — 10% off hoje, 15% amanhã") + e-mail personalizado com os últimos produtos visualizados.
-- **KPI principal:** Taxa de reativação (compra realizada em até 30 dias após o contato).
-- **Meta (3 meses):** Recuperar 20% dos clientes do cluster, monitorando o LTV pós-reativação para validar rentabilidade.
-- **Justificativa:** O custo de reter é 5–7x menor que o de adquirir um novo cliente. Um incentivo financeiro com urgência pode reengajar clientes que ainda têm propensão de compra latente.
-
----
-
-### Cluster 3: Compradores Inconstantes 🎯
-
-- **Perfil resumido:** Clientes com baixa frequência, mas gasto moderado por compra. Compram quando têm intenção clara, sem relacionamento contínuo com a marca.
-- **Ação de marketing sugerida:** Sequência de "nudges" de recorrência via push/SMS em datas relevantes (aniversário, datas comemorativas) com curadoria personalizada de produtos baseada nas categorias já compradas.
-- **KPI principal:** Frequência de compra trimestral.
-- **Meta (3 meses):** Aumentar de 1 para 3 compras por trimestre em 25% do cluster.
-- **Justificativa:** Esses clientes já demonstraram disposição de gastar; a barreira não é financeira, mas de engajamento. Gatilhos contextuais e personalizados criam o momento certo de compra.
-
----
-
-### Cluster 4: Compradores Maduros 👴
-
-- **Perfil resumido:** Clientes de faixa etária mais avançada, com compras esporádicas, baixo gasto e adesão predominantemente Bronze. Menor sensibilidade digital, mas fidelidade potencial alta.
-- **Ação de marketing sugerida:** Promoções simplificadas via e-mail com linguagem clara e CTAs diretos. Campanhas sazonais (Dia das Mães, Natal) com produtos de fácil navegação e opção de atendimento humano.
-- **KPI principal:** Taxa de conversão em campanhas sazonais.
-- **Meta (3 meses):** Aumentar a taxa de conversão em 10% durante as próximas 2 datas comemorativas.
-- **Justificativa:** Comunicação adaptada ao perfil reduz fricção e aumenta conversão nesse segmento, que costuma ter alto ticket nas compras que efetua quando bem segmentado.
-
----
-
-### Cluster 5: VIPs em Risco 💎
-
-- **Perfil resumido:** Clientes com histórico de alto gasto e adesão Gold, mas que reduziram significativamente a atividade recente. Representam a maior perda potencial de receita do portfólio.
-- **Ação de marketing sugerida:** Contato proativo e personalizado (preferencialmente via Account Manager ou e-mail assinado pelo CEO da plataforma) com oferta exclusiva de reengajamento: crédito, frete grátis por 3 meses ou acesso a coleção exclusiva.
-- **KPI principal:** Retorno ao padrão histórico de compras (frequência e gasto pré-queda).
-- **Meta (3 meses):** Recuperar 25% dos clientes desse cluster ao nível histórico de atividade.
-- **Justificativa:** São clientes que já demonstraram alto valor; a queda sugere insatisfação ou mudança de contexto — não abandono definitivo. Atenção personalizada tem alto ROI nesse grupo.
-
----
-
-### Cluster 6: Exploradores de Desconto 🔄
-
-- **Perfil resumido:** Clientes que concentram compras em períodos com `Discount Applied = 1`, com frequência e gasto correlacionados a promoções. Baixa conversão em períodos sem oferta.
-- **Ação de marketing sugerida:** Programa de fidelização pós-compra com pontos acumuláveis — incentivando a recompra sem desconto — e testes A/B de ofertas de valor não-monetário (frete grátis, brinde, acesso antecipado).
-- **KPI principal:** Percentual de compras realizadas sem desconto aplicado.
-- **Meta (3 meses):** Aumentar em 5 p.p. a participação de compras full-price nesse cluster.
-- **Justificativa:** Reduzir a dependência de desconto protege a margem. Alternativas de valor percebido criam vínculo emocional sem comprometer a rentabilidade.
-
----
-
-## 🚀 Como Reproduzir
+## 📂 Como Executar
 
 ```bash
-# Clone o repositório
-git clone https://github.com/HammadN98/Segmentacao_de_Clientes_para_E-commerce.git
-cd Segmentacao_de_Clientes_para_E-commerce
+# 1. Clone o repositório
+git clone https://github.com/seu-usuario/customer-segmentation.git
+cd customer-segmentation
 
-# Instale as dependências
-pip install -r requirements.txt
+# 2. Instale as dependências
+pip install pandas numpy scikit-learn plotly seaborn matplotlib scipy
 
-# Execute o notebook principal
-jupyter notebook notebooks/segmentacao_clientes.ipynb
+# 3. Abra o notebook
+jupyter notebook notebook.ipynb
 ```
 
-**Dependências principais:**
-- `pandas`, `numpy` — manipulação de dados
-- `scikit-learn` — K-Means, StandardScaler, Silhouette Score
-- `matplotlib`, `seaborn` — visualizações
-- `yellowbrick` — Elbow Method visual
+> Os dados são carregados diretamente via URL pública — nenhum download manual necessário.
 
----
+<br>
 
-## 🔭 Próximos Passos
+## 📈 Principais Resultados
 
-- [ ] Testar algoritmos alternativos: **DBSCAN** e **Hierarchical Clustering** para comparação
-- [ ] Aplicar **PCA** para redução dimensional e melhor visualização dos clusters em 2D
-- [ ] Criar **pipeline de re-segmentação automática** mensal à medida que novos dados chegam
-- [ ] Calcular **LTV real por cluster** com dados históricos para validar projeções de impacto
-- [ ] Integrar segmentos a uma ferramenta de CRM/CDP para automação das campanhas
+- **7 perfis** de clientes identificados com separação estatisticamente significativa (ANOVA e Qui-Quadrado, p < 0.05 em todas as variáveis)
+- **Silhouette Score > 0.70** após inclusão de variáveis categóricas codificadas
+- **Estabilidade comprovada**: ARI de 0.616 sob perturbação gaussiana de 5% em 100 iterações
+- **Cobertura total** da base de clientes — nenhum cliente sem segmento
+- Personas **diretamente acionáveis** para campanhas de CRM segmentadas
 
----
+<br>
 
 ## 👤 Autor
 
-Desenvolvido por **[Hammad N.](https://github.com/HammadN98)**  
+**Seu Nome**
+Analista de Dados | 1 ano de experiência
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin)](https://linkedin.com)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-black?logo=github)](https://github.com/HammadN98)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/seu-perfil)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/seu-usuario)
+
+<br>
+
+---
+
+<p align="center">
+  <i>Este projeto faz parte do meu portfólio de Ciência e Análise de Dados.<br>
+  Feedbacks são bem-vindos — sinta-se à vontade para abrir uma issue ou me chamar no LinkedIn.</i>
+</p>
