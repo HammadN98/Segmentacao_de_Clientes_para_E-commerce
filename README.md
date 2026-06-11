@@ -186,16 +186,7 @@ jupyter notebook notebook.ipynb
 - **Cobertura total** da base de clientes — nenhum cliente sem segmento
 - Personas **diretamente acionáveis** para campanhas de CRM segmentadas
 
-<br>
 
-## 👤 Autor
-
-
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/seu-perfil)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/seu-usuario)
-
-<br>
 
 ---
 
