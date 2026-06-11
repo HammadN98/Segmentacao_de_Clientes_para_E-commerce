@@ -186,11 +186,3 @@ jupyter notebook notebook.ipynb
 - **Cobertura total** da base de clientes — nenhum cliente sem segmento
 - Personas **diretamente acionáveis** para campanhas de CRM segmentadas
 
-
-
----
-
-<p align="center">
-  <i>Este projeto faz parte do meu portfólio de Ciência e Análise de Dados.<br>
-  Feedbacks são bem-vindos — sinta-se à vontade para abrir uma issue ou me chamar no LinkedIn.</i>
-</p>
